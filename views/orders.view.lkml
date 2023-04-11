@@ -17,10 +17,30 @@ view: orders {
       week,
       month,
       quarter,
-      year
+      year,
+      hour,
+      hour_of_day
     ]
     sql: ${TABLE}.created_at ;;
   }
+  dimension: hr {
+    type: string
+    sql: ${created_hour_of_day} ;;
+  }
+  measure: lst_hour{
+    type: max
+    #sql:  ${created_hour_of_day};;
+    sql: ${hr} ;;
+  }
+  measure: yesno {
+    type: yesno
+    sql: ${created_hour_of_day}=${lst_hour};;
+  }
+  measure: cnt_latest {
+    type: number
+    sql: (select ${cnt} from orders where ${TABLE}.hr=${TABLE}.lst_hour);;
+  }
+
 
   dimension: status {
     type: string
@@ -37,6 +57,11 @@ view: orders {
     type: count
     drill_fields: [detail*]
   }
+  dimension: cnt{
+    type: number
+    sql: ${id} ;;
+  }
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

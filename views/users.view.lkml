@@ -62,6 +62,15 @@ view: users {
     type: string
     sql: ${TABLE}.state ;;
   }
+  parameter: max_rank {
+    type: number
+  }
+
+  dimension: rank_limit {
+    type: number
+    sql: {% parameter max_rank %} ;;
+  }
+
 
   dimension: zip {
     type: zipcode
