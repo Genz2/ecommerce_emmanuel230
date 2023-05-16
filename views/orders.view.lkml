@@ -6,6 +6,9 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    link: {
+      url: "https://gcpl230.cloud.looker.com/dashboards/364?&f[orders.id]={{ value}}"
+    }
   }
 
   dimension_group: created {
