@@ -83,74 +83,8 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
-  measure: 4_bar_dry_air {
-    label: "4 Bar Dry Air"
-    type: average
-    sql: ${id} ;;
-    value_format: "0.00"
-    filters: [order_id: ">1000"]
-    link: {
-      label: "Show trend by hour" #or your label of choice
-      url: "
-      {% assign vis_config = '{
-      \"x_axis_gridlines\":false,\"y_axis_gridlines\":true,\"show_view_names\":false,\"show_y_axis_labels\":true,\"show_y_axis_ticks\":true,\"y_axis_tick_density\":\"default\",\"y_axis_tick_density_custom\":5,\"show_x_axis_label\":true,\"show_x_axis_ticks\":true,\"y_axis_scale_mode\":\"linear\",\"x_axis_reversed\":false,\"y_axis_reversed\":false,\"plot_size_by_field\":false,\"trellis\":\"\",\"stacking\":\"\",\"limit_displayed_rows\":false,\"legend_position\":\"center\",\"point_style\":\"circle\",\"show_value_labels\":true,\"label_density\":25,\"x_axis_scale\":\"auto\",\"y_axis_combined\":true,\"show_null_points\":true,\"interpolation\":\"linear\",\"y_axes\":[{\"label\":\"\",\"orientation\":\"left\",\"series\":[{\"axisId\":\"v_utilities.4_bar_dry_air\",\"id\":\"v_utilities.4_bar_dry_air\",\"name\":\"4 Bar Dry Air\"}],\"showLabels\":true,\"showValues\":true,\"unpinAxis\":true,\"tickDensity\":\"default\",\"tickDensityCustom\":5,\"type\":\"linear\"}],\"x_axis_zoom\":true,\"y_axis_zoom\":true,\"type\":\"looker_line\",\"defaults_version\":1
-      }' %}
-      {{ 4_bar_dry_air_drill_set_1._link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000"
-    }
-  }
-  measure: 4_bar_wet_air {
-    label: "4 Bar Wet Air"
-    type: average
-    sql: ${id} ;;
-    value_format: "0.00"
-    filters: [order_id: ">1000"]
-    link: {
-      label: "Show trend by hour" #or your label of choice
-      url: "{{ 4_bar_wet_air_drill_set_1._link }}"
-    }
-  }
-  measure: 4_bar_dry_air_drill_set_1 {
-    sql: 0 ;;
-    drill_fields: [returned_time,4_bar_dry_air_2]
-    hidden: yes
-  }
-  measure: 4_bar_wet_air_drill_set_1 {
-    sql: 0 ;;
-    drill_fields: [returned_time,4_bar_wet_air_2]
-    hidden: yes
-  }
-  measure: 4_bar_wet_air_2 {
-    hidden: yes
-    label: "4 Bar Wet Air2"
-    type: average
-    sql: ${id} ;;
-    value_format: "0.00"
-    filters: [order_id: ">1000"]
-    link: {
-      label: "Show trend by minute" #or your label of choice
-      url: "
-      {% assign vis_config = '{
-      \"x_axis_gridlines\":false,\"y_axis_gridlines\":true,\"show_view_names\":false,\"show_y_axis_labels\":true,\"show_y_axis_ticks\":true,\"y_axis_tick_density\":\"default\",\"y_axis_tick_density_custom\":5,\"show_x_axis_label\":true,\"show_x_axis_ticks\":true,\"y_axis_scale_mode\":\"linear\",\"x_axis_reversed\":false,\"y_axis_reversed\":false,\"plot_size_by_field\":false,\"trellis\":\"\",\"stacking\":\"\",\"limit_displayed_rows\":false,\"legend_position\":\"center\",\"point_style\":\"circle\",\"show_value_labels\":true,\"label_density\":25,\"x_axis_scale\":\"auto\",\"y_axis_combined\":true,\"show_null_points\":true,\"interpolation\":\"linear\",\"y_axes\":[{\"label\":\"\",\"orientation\":\"left\",\"series\":[{\"axisId\":\"v_utilities.4_bar_dry_air\",\"id\":\"v_utilities.4_bar_dry_air\",\"name\":\"4 Bar Dry Air\"}],\"showLabels\":true,\"showValues\":true,\"unpinAxis\":true,\"tickDensity\":\"default\",\"tickDensityCustom\":5,\"type\":\"linear\"}],\"x_axis_zoom\":true,\"y_axis_zoom\":true,\"type\":\"looker_line\",\"defaults_version\":1
-      }' %}
-      {{ 4_bar_wet_air_drill_set_1._link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000"
-    }
-  }
-  measure: 4_bar_dry_air_2 {
-    hidden: yes
-    label: "4 Bar Dry Air 2"
-    type: average
-    sql: ${id} ;;
-    value_format: "0.00"
-    filters: [order_id: ">1000"]
-    link: {
-      label: "Show trend by minute" #or your label of choice
-      url: "
-      {% assign vis_config = '{
-      \"x_axis_gridlines\":false,\"y_axis_gridlines\":true,\"show_view_names\":false,\"show_y_axis_labels\":true,\"show_y_axis_ticks\":true,\"y_axis_tick_density\":\"default\",\"y_axis_tick_density_custom\":5,\"show_x_axis_label\":true,\"show_x_axis_ticks\":true,\"y_axis_scale_mode\":\"linear\",\"x_axis_reversed\":false,\"y_axis_reversed\":false,\"plot_size_by_field\":false,\"trellis\":\"\",\"stacking\":\"\",\"limit_displayed_rows\":false,\"legend_position\":\"center\",\"point_style\":\"circle\",\"show_value_labels\":true,\"label_density\":25,\"x_axis_scale\":\"auto\",\"y_axis_combined\":true,\"show_null_points\":true,\"interpolation\":\"linear\",\"y_axes\":[{\"label\":\"\",\"orientation\":\"left\",\"series\":[{\"axisId\":\"v_utilities.4_bar_dry_air\",\"id\":\"v_utilities.4_bar_dry_air\",\"name\":\"4 Bar Dry Air\"}],\"showLabels\":true,\"showValues\":true,\"unpinAxis\":true,\"tickDensity\":\"default\",\"tickDensityCustom\":5,\"type\":\"linear\"}],\"x_axis_zoom\":true,\"y_axis_zoom\":true,\"type\":\"looker_line\",\"defaults_version\":1
-      }' %}
-      {{ 4_bar_dry_air_drill_set_1._link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000"
-    }
-  }
+
+
 
   dimension: hire {
     type: yesno
