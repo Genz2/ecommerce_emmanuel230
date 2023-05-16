@@ -7,6 +7,7 @@ view: orders {
     type: number
     sql: ${TABLE}.id ;;
     link: {
+      label: "dash link"
       url: "https://gcpl230.cloud.looker.com/dashboards/364?&f[orders.id]={{ value}}"
     }
   }
