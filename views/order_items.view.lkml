@@ -23,15 +23,9 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
-    html:
-
-    {% if metric_selector._parameter_value == "'three'" %}
-     <div style=" number-format='0.000' ">{{ rendered_value|metric_selector._parameter_value}}</div>
-    {% elsif metric_selector._parameter_value == "'four'" %}
-     <div style="number-format='0.0000' ">{{ rendered_value }}</div>
-    {% endif %}
-    ${{ rendered_value}}
-    ;;
+   link: {
+     url: "https://gcpl230.cloud.looker.com/dashboards/364?&f[order_items.id]={{ value }}"
+   }
 
   }
   measure: avg {
